@@ -1,6 +1,7 @@
-// src/components/NavBar.jsx
 import { useState } from 'react';
-import { FiMenu, FiX, FiShoppingCart } from 'react-icons/fi';
+import { FiMenu, FiX } from 'react-icons/fi';
+import Lottie from 'lottie-react';
+import shopCarAnimation from '../assets/shopCar.json';
 import BankInfo from './BankInfo';
 import '../styles/NavBar.css';
 
@@ -34,7 +35,11 @@ export default function NavBar() {
                 onClick={() => setShowBank(true)}
                 aria-label="Ver información bancaria"
               >
-                <FiShoppingCart size={24} />
+                <Lottie
+                  animationData={shopCarAnimation}
+                  loop={true}
+                  className="cart-animation"
+                />
               </button>
             </li>
           </ul>
