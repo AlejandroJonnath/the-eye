@@ -1,0 +1,35 @@
+.social-section {
+    padding: 4rem 2rem;
+    background: #111;
+    color: var(--color-contrast);
+    text-align: center;
+    animation: fadeInUp 1s both;
+  }
+  .social-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+  }
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  .social-buttons a {
+    color: var(--color-contrast);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+  .social-buttons a:hover {
+    color: var(--color-accent);
+    transform: scale(1.2);
+  }
+  .insta-feed iframe {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  }
+  

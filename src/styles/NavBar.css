@@ -3,7 +3,7 @@
   top: 0;
   width: 100%;
   background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -17,9 +17,14 @@
   animation: fadeInUp 0.8s both;
 }
 .logo {
-  height: 50px;
+  max-height: 45px;
+  width: auto;
   margin-right: 0.75rem;
   filter: drop-shadow(0 0 5px #fff);
+  transition: transform var(--transition-fast);
+}
+.logo:hover {
+  transform: scale(1.05);
 }
 .slogan {
   font-size: 1rem;
@@ -66,6 +71,19 @@
   width: 100%;
 }
 
+/* Cart button */
+.cart-button {
+  background: none;
+  border: none;
+  color: var(--color-contrast);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+.cart-button:hover {
+  transform: scale(1.1);
+  color: var(--color-accent);
+}
+
 /* Mobile */
 @media (max-width: 768px) {
   .nav-toggle {
@@ -93,12 +111,11 @@
   }
 }
 
-/* Nav gradient text animation */
 @keyframes gradientText {
   to { background-position: 200% center; }
 }
 .slogan {
-  background: linear-gradient(90deg, #ff8a00, #e52e71, #7928ca);
+  background: linear-gradient(90deg, #eaab25, #4c48ff, #18dccf);
   background-size: 400% 100%;
   background-clip: text;
   -webkit-background-clip: text;

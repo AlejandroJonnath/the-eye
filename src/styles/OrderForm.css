@@ -1,0 +1,70 @@
+/* src/styles/OrderForm.css */
+.order-section {
+    padding: 4rem 2rem;
+    background: #111;
+    color: #eaeaea;
+    border-radius: 12px;
+    margin: 4rem 0;
+    animation: fadeInUp 1s both;
+  }
+  .order-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--color-accent);
+  }
+  .order-form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .order-form label {
+    font-weight: 600;
+  }
+  .order-form input[type="text"],
+  .order-form input[type="email"],
+  .order-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    border-radius: 8px;
+    background: #222;
+    color: var(--color-contrast);
+  }
+  .order-form input[type="file"] {
+    color: var(--color-contrast);
+  }
+  .error {
+    color: var(--color-accent);
+    font-size: 0.9rem;
+  }
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  .form-buttons .btn-back,
+  .form-buttons .btn-next {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+  .btn-back {
+    background: #333;
+    color: #eaeaea;
+  }
+  .btn-back:hover {
+    background: #444;
+  }
+  .btn-next {
+    background: var(--color-gradient-start);
+    color: #fff;
+  }
+  .btn-next:hover {
+    background: var(--color-gradient-end);
+    transform: translateY(-2px);
+  }
+  

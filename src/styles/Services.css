@@ -26,3 +26,25 @@
   color: var(--color-accent);
   opacity: 0.2;
 }
+.services p::after {
+  content: '\201D';
+  font-size: 3rem;
+  position: absolute;
+  right: -1.5rem;
+  bottom: -0.5rem;
+  color: var(--color-accent);
+  opacity: 0.2;
+}
+.services .service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+.services .service-card {
+  background: #222;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+

@@ -1,0 +1,54 @@
+.bank-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    animation: fadeInUp 0.5s both;
+  }
+  .bank-modal {
+    background: #222;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: fadeInUp 0.5s both;
+  }
+  .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-contrast);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+  }
+  .close-btn:hover {
+    color: var(--color-accent);
+  }
+  .bank-modal h2 {
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+    text-align: center;
+  }
+  .bank-modal ul {
+    list-style: none;
+    padding: 0;
+  }
+  .bank-modal li {
+    margin: 0.75rem 0;
+    font-size: 1rem;
+    color: var(--color-contrast);
+  }
+  .bank-modal li strong {
+    color: var(--color-accent);
+  }

@@ -37,7 +37,9 @@ main {
   padding: 2rem;
 }
 
-/* Smooth scroll reveal */
+/*
+Sirve para animar el texto de la sección de servicios, productos y footer
+*/
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }

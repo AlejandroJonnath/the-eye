@@ -1,0 +1,6 @@
+.not-reveal {
+    opacity: 0;
+  }
+  .reveal {
+    animation: fadeInUp 1s both;
+  }
