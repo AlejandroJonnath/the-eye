@@ -1,0 +1,17 @@
+.services {
+    background: #eee;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 8px;
+  }
+  
+  .services h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .services p {
+    max-width: 600px;
+    margin: 0.5rem auto;
+    line-height: 1.6;
+  }
+  
