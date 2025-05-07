@@ -1,14 +1,26 @@
-/* reset */
+:root {
+  --font-primary: 'Poppins', sans-serif;
+  --color-bg: #0d0d0d;
+  --color-contrast: #eaeaea;
+  --color-accent: #ff4081;
+  --color-gradient-start: #ff0080;
+  --color-gradient-end: #7928ca;
+  --transition-fast: 0.3s ease-in-out;
+  --transition-slow: 0.6s ease;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f6f6f6;
-  color: #333;
-  line-height: 1.5;
+  font-family: var(--font-primary);
+  background: var(--color-bg);
+  color: var(--color-contrast);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 a {
   text-decoration: none;
@@ -22,5 +34,11 @@ img {
   max-width: 100%;
 }
 main {
-  padding: 1rem 2rem;
+  padding: 2rem;
+}
+
+/* Smooth scroll reveal */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }

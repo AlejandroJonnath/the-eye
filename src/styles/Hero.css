@@ -1,15 +1,27 @@
 .hero {
-    background: #ddd;
-    padding: 4rem 2rem;
-    text-align: center;
-  }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  .hero p {
-    font-size: 1.1rem;
-    color: #555;
-  }
-  
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(120deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('/assets/hero-bg.jpg') center/cover no-repeat;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+  animation: fadeInUp 1.2s both;
+}
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  animation: textPop 1s ease;
+}
+.hero p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  animation: fadeInUp 1.5s both;
+}
+@keyframes textPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}

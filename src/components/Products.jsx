@@ -1,12 +1,18 @@
-import './styles/Products.css';
+import '../styles/products.css';
+import pd1 from '../assets/pd1.jpg';
+import pd2 from '../assets/pd2.jpg';
+import pd3 from '../assets/pd3.jpg';
+
+const productos = [
+  { nombre: 'Camiseta Negra', imagen: pd1, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Camiseta Blanca', imagen: pd2, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Camiseta Gris', imagen: pd3, descripcion: 'Diseño a mano en stock' },
+  // Agrega más productos aquí, exactamente como arriba pero con la foto de cada uno
+  // las fotos están en assets, pero el logo está en public. No tocar nada de public
+
+];
 
 export default function Products() {
-  const productos = [
-    { nombre: 'Camiseta Negra', imagen: '/assets/camiseta1.jpg', descripcion: 'Diseño a mano en stock' },
-    { nombre: 'Camiseta Blanca', imagen: '/assets/camiseta2.jpg', descripcion: 'Diseño exclusivo no entregado' },
-    { nombre: 'Camiseta Gris', imagen: '/assets/camiseta3.jpg', descripcion: 'Pendiente por cliente, ahora en venta' },
-  ];
-
   return (
     <section id="productos" className="products">
       <h2>Productos en stock</h2>
