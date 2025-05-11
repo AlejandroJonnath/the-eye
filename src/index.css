@@ -1,12 +1,21 @@
+
 :root {
   --font-primary: 'Poppins', sans-serif;
-  --color-bg: #0d0d0d;
-  --color-contrast: #eaeaea;
-  --color-accent: #ff4081;
-  --color-gradient-start: #ff0080;
-  --color-gradient-end: #7928ca;
+  --color-bg: #1a120b; /* Deep brown-black base */
+  --color-contrast: #f5e8c7; /* Warm cream for text */
+  --color-accent: #d98236; /* Primary copper tone */
+  --color-accent-light: #e8a35a; /* Lighter copper */
+  --color-accent-dark: #b56a2b; /* Darker copper */
+  --color-gradient-start: #d98236; /* Copper */
+  --color-gradient-end: #9c4a1a; /* Rust */
   --transition-fast: 0.3s ease-in-out;
   --transition-slow: 0.6s ease;
+  
+  /* Copper palette extras */
+  --color-surface: #2a1e12; /* Dark brown surface */
+  --color-border: #4a3a24; /* Copper patina border */
+  --color-hover: #3d2e1c; /* Hover state */
+  --color-muted: #8a7a65; /* Muted brown-gray */
 }
 
 * {
@@ -15,6 +24,7 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
 body {
   font-family: var(--font-primary);
   background: var(--color-bg);
@@ -22,21 +32,103 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
+
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-accent-light);
+  transition: color var(--transition-fast);
 }
+
+a:hover {
+  color: var(--color-accent);
+  text-shadow: 0 0 8px rgba(217, 130, 54, 0.3);
+}
+
 ul {
   list-style: none;
 }
+
 img {
   display: block;
   max-width: 100%;
-}
-main {
-  padding: 2rem;
+  height: auto;
+  border-radius: 4px;
 }
 
+main {
+  padding: 2rem;
+  background: var(--color-bg);
+}
+
+/* Copper-themed typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-accent-light);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  color: var(--color-contrast);
+  margin-bottom: 1.5rem;
+}
+
+/* Copper surface elements */
+.surface {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Interactive elements */
+button, .button {
+  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+  color: var(--color-contrast);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+button:hover, .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(217, 130, 54, 0.4);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-light);
+}
+
+/* Special copper accents */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* Copper glow effect */
+.glow-effect {
+  transition: box-shadow var(--transition-slow);
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 20px rgba(217, 130, 54, 0.6);
+}
 /*
 Sirve para animar el texto de la sección de servicios, productos y footer
 */
