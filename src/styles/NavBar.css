@@ -1,3 +1,4 @@
+
 .navbar {
   position: fixed;
   top: 0;
@@ -138,12 +139,16 @@
 }
 
 @keyframes gradientText {
-  to { background-position: 200% center; }
+  0% { background-position: 0% center; }
+  100% { background-position: 100% center; }
 }
 .slogan {
-  background: linear-gradient(90deg, #eaab25, #4c48ff, #18dccf);
-  background-size: 400% 100%;
+  background: linear-gradient(90deg, #d98236, #e8a35a, #b56a2b); /* Tonos cobrizos */
+  background-size: 200% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: gradientText 4s ease infinite alternate;
+  font-weight: 600;
+  text-shadow: 0 2px  white;
 }
