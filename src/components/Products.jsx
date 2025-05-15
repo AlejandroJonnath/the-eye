@@ -2,14 +2,27 @@ import '../styles/products.css';
 import pd1 from '../assets/pd1.jpg';
 import pd2 from '../assets/pd2.jpg';
 import pd3 from '../assets/pd3.jpg';
+import pd4 from '../assets/pd4.jpg';
+import pd5 from '../assets/pd5.jpg';
+import pd6 from '../assets/pd6.jpg';
+import pd7 from '../assets/pd7.jpg';
+import pd8 from '../assets/pd8.jpg';
+import pd9 from '../assets/pd9.jpg';
+import pd10 from '../assets/pd10.jpg';
+import pd11 from '../assets/pd11.jpg';
 
 const productos = [
-  { nombre: 'Camiseta Negra', imagen: pd1, descripcion: 'Diseño a mano en stock' },
-  { nombre: 'Camiseta Blanca', imagen: pd2, descripcion: 'Diseño a mano en stock' },
-  { nombre: 'Camiseta Gris', imagen: pd3, descripcion: 'Diseño a mano en stock' },
-  // Agrega más productos aquí, exactamente como arriba pero con la foto de cada uno
-  // las fotos están en assets, pero el logo está en public. No tocar nada de public
-
+  { nombre: 'Personalizada 1', imagen: pd1, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 2', imagen: pd2, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 3', imagen: pd3, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 4', imagen: pd4, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 5', imagen: pd5, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 6', imagen: pd6, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 7', imagen: pd7, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 8', imagen: pd8, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 9', imagen: pd9, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 10', imagen: pd10, descripcion: 'Diseño a mano en stock' },
+  { nombre: 'Personalizada 11', imagen: pd11, descripcion: 'Diseño a mano en stock' }
 ];
 
 export default function Products() {

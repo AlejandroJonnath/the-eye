@@ -1,3 +1,12 @@
+:root {
+  --color-gradient-start: #23233a;
+  --color-gradient-end: #181818;
+  --color-accent: #ffd700;
+  --color-contrast: #fff;
+  --color-bg: #181818;
+  --transition-fast: 0.18s cubic-bezier(.4,1.5,.6,1);
+  --transition-slow: 0.35s cubic-bezier(.4,1.5,.6,1);
+}
 
 .navbar {
   position: fixed;
@@ -9,30 +18,44 @@
   align-items: center;
   justify-content: space-between;
   z-index: 100;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.45);
+  border-bottom-left-radius: 1.2rem;
+  border-bottom-right-radius: 1.2rem;
+  backdrop-filter: blur(6px) saturate(120%);
 }
 
 .brand {
   display: flex;
   align-items: center;
   animation: fadeInUp 0.8s both;
+  gap: 0.7rem;
 }
 .logo {
-  max-height: 45px;
+  max-height: 48px;
   width: auto;
   margin-right: 0.75rem;
-  border-radius: 25px;
-  filter: drop-shadow(0 0 5px #fff);
-  transition: transform var(--transition-fast);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px #fff8);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 2px 12px rgba(255,215,0,0.10);
+  background: #fff2;
 }
 .logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 4px 18px rgba(255,215,0,0.18);
 }
 .slogan {
-  font-size: 1rem;
+  font-size: 1.08rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  animation: gradientText 3s infinite alternate;
+  background: linear-gradient(90deg, #d98236, #e8a35a, #b56a2b);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 4s ease infinite alternate;
+  font-weight: 700;
+  text-shadow: 0 2px 8px #fff4;
 }
 
 .nav-toggle {
@@ -43,21 +66,36 @@
   cursor: pointer;
   z-index: 110;
   animation: fadeInUp 1s both;
+  font-size: 2rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  transition: background 0.18s;
+}
+.nav-toggle:hover {
+  background: rgba(255,255,255,0.07);
 }
 
 .nav ul {
   display: flex;
   gap: 2rem;
   animation: fadeInUp 1s both;
+  align-items: center;
 }
 .nav a {
   position: relative;
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.08rem;
+  font-weight: 700;
   transition: color var(--transition-fast);
+  color: #fff;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.7rem;
+  border-radius: 0.7rem;
+  text-decoration: none;
 }
 .nav a:hover {
   color: var(--color-accent);
+  background: rgba(255,215,0,0.07);
+  transform: translateY(-2px) scale(1.07);
 }
 .nav a::after {
   content: '';
@@ -73,7 +111,14 @@
   width: 100%;
 }
 
-/* Cart button */
+/* Navbar actions (cart, login, etc) */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-left: 1.2rem;
+}
+
 .cart-button {
   background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
   border: none;
@@ -85,19 +130,17 @@
   border-radius: 50%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  position: relative;
 }
-
 .cart-button:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   background-color: rgba(255, 255, 255, 0.1);
 }
-
 .cart-button:active {
   transform: scale(0.95);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
-
 .cart-animation {
   width: 50px;
   height: 50px;
@@ -105,50 +148,116 @@
   filter: drop-shadow(0 0 8px var(--color-accent));
   transition: filter var(--transition-fast), transform var(--transition-fast);
 }
-
 .cart-button:hover .cart-animation {
   filter: drop-shadow(0 0 15px var(--color-accent));
   transform: rotate(10deg);
 }
 
-/* Mobile */
+/* Login button */
+.login-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(90deg, #ffd700 0%, #e8a35a 100%);
+  color: #23233a;
+  font-weight: 700;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.08rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.10);
+  transition: background 0.18s, color 0.18s, transform 0.18s;
+}
+.login-button:hover {
+  background: linear-gradient(90deg, #e8a35a 0%, #ffd700 100%);
+  color: #181818;
+  transform: translateY(-2px) scale(1.06);
+}
+.login-text {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0.7rem 0.7rem;
+  }
+  .nav ul {
+    gap: 1.1rem;
+  }
+  .navbar-actions {
+    gap: 0.7rem;
+    margin-left: 0.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
+    position-try-order: absolute;
+    right: 2rem; /* Un poco más a la derecha que antes */
+    top: 1.1rem;
+    z-index: 130;
   }
   .nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 0;
-    height: 100%;
+    height: 100vh;
     background: var(--color-bg);
     overflow: hidden;
-    transition: width var(--transition-slow);
+    transition: width var(--transition-slow), opacity 0.2s;
     padding-top: 4rem;
+    z-index: 120;
+    box-shadow: 2px 0 16px rgba(0,0,0,0.25);
+    visibility: hidden;
+    opacity: 0;
   }
   .nav.open {
-    width: 240px;
+    width: 180px; /* Menor ancho para dejar espacio y poder cerrar */
+    visibility: visible;
+    opacity: 1;
   }
   .nav ul {
     display: flex;
     flex-direction: column;
-    padding-left: 1.5rem;
-    gap: 1.5rem;
+    padding-left: 1rem;
+    gap: 1.2rem;
+    align-items: flex-start;
+    opacity: 1;
   }
 }
 
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem 0.2rem;
+    border-radius: 0 0 0.7rem 0.7rem;
+  }
+  .brand .slogan {
+    font-size: 0.85rem;
+  }
+  .logo {
+    max-height: 36px;
+  }
+  .login-button {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.7rem;
+  }
+  .cart-animation {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Animaciones */
 @keyframes gradientText {
   0% { background-position: 0% center; }
   100% { background-position: 100% center; }
 }
-.slogan {
-  background: linear-gradient(90deg, #d98236, #e8a35a, #b56a2b); /* Tonos cobrizos */
-  background-size: 200% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientText 4s ease infinite alternate;
-  font-weight: 600;
-  text-shadow: 0 2px  white;
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(60px);}
+  100% { opacity: 1; transform: translateY(0);}
 }
