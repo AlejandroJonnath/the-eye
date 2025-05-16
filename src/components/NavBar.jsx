@@ -13,7 +13,7 @@ export default function NavBar() {
     <>
       <header className="navbar">
         <div className="brand">
-          <img src="/logo.png" alt="THE EYE" className="logo" />
+          <img src="/logo.jpg" alt="THE EYE" className="logo" />
         </div>
 
         <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Menú">

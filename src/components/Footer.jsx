@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-brand">
-          <img src="/logo.png" alt="THE EYE Logo" className="footer-logo" />
+          <img src="/logo.jpg" alt="THE EYE Logo" className="footer-logo" />
           <span className="footer-title">THE EYE</span>
         </div>
         <nav className="footer-links">
