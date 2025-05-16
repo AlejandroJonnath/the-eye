@@ -1,4 +1,4 @@
-import '../styles/products.css';
+import '../styles/Products.css';
 import pd1 from '../assets/pd1.jpg';
 import pd2 from '../assets/pd2.jpg';
 import pd3 from '../assets/pd3.jpg';

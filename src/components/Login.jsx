@@ -1,7 +1,7 @@
 // src/components/Login.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import '../styles/Login.css';
 
 const Login = () => {
   const [isAdmin, setIsAdmin] = useState(false);

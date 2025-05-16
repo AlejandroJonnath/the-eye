@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiMenu, FiX, FiUser, FiStar } from 'react-icons/fi';
+import { FiMenu, FiX, FiUser } from 'react-icons/fi';
 import Lottie from 'lottie-react';
 import shopCarAnimation from '../assets/shopCar.json';
 import BankInfo from './BankInfo';
@@ -8,9 +8,6 @@ import '../styles/NavBar.css';
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const [showBank, setShowBank] = useState(false);
-
-  // Enlaces principales y adicionales
-  const centerLinks = ['Inicio', 'Productos', 'Servicios', 'Galería', 'Testimonios', 'Blog'];
 
   return (
     <>
@@ -25,11 +22,24 @@ export default function NavBar() {
 
         <nav className={open ? 'nav open' : 'nav'}>
           <ul>
-            {centerLinks.map(link => (
-              <li key={link}>
-                <a href={`#${link.toLowerCase()}`}>{link}</a>
-              </li>
-            ))}
+            <li>
+              <a href="/">Inicio</a>
+            </li>
+            <li>
+              <a href="/productos">Productos</a>
+            </li>
+            <li>
+              <a href="/servicios">Servicios</a>
+            </li>
+            <li>
+              <a href="/galeria">Galería</a>
+            </li>
+            <li>
+              <a href="/testimonios">Testimonios</a>
+            </li>
+            <li>
+              <a href="/blog">Blog</a>
+            </li>
           </ul>
         </nav>
         <div className="navbar-actions">
