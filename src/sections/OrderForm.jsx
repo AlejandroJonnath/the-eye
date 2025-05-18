@@ -1,27 +1,35 @@
-// Requiere instalar Formik y Yup
-// npm install formik yup
-
+import '../styles/OrderForm.css';
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import '../styles/OrderForm.css';
-
-const steps = ['Datos de contacto', 'Diseño', 'Confirmación'];
-
-const validationSchemas = [
-  Yup.object({
-    name: Yup.string().required('Nombre es requerido'),
-    email: Yup.string().email('Email inválido').required('Email es requerido'),
-  }),
-  Yup.object({
-    description: Yup.string().required('Descripción es requerida'),
-    file: Yup.mixed().required('Imagen es requerida'),
-  }),
-];
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function OrderForm() {
+  const steps = ['Datos de contacto', 'Diseño', 'Confirmación'];
+  
+  const validationSchemas = [
+    Yup.object({
+      name: Yup.string().required('Nombre es requerido'),
+      email: Yup.string().email('Email inválido').required('Email es requerido'),
+      phone: Yup.string()
+        .matches(/^[0-9]+$/, "Solo números permitidos")
+        .min(10, 'El teléfono debe tener al menos 10 dígitos')
+        .required('Teléfono es requerido'),
+    }),
+    Yup.object({
+      description: Yup.string().required('Descripción es requerida'),
+      file: Yup.mixed().required('Imagen es requerida'),
+    }),
+  ];
+
   const [step, setStep] = useState(0);
-  const initialValues = { name: '', email: '', description: '', file: null };
+  const initialValues = { 
+    name: '', 
+    email: '', 
+    phone: '', 
+    description: '', 
+    file: null 
+  };
 
   const handleSubmit = (values, actions) => {
     if (step < steps.length - 1) {
@@ -36,10 +44,32 @@ export default function OrderForm() {
   };
 
   const handleBack = () => setStep(step - 1);
-
   return (
     <section id="order" className="order-section">
-      <h2>Realiza tu pedido</h2>
+      <h2>Servicios</h2>
+      <div className="store-description">
+        <p>
+        En THE-EYE, la experiencia de compra es interactiva y divertida. Los clientes pueden visitar
+        nuestra plataforma en línea, donde pueden ver ejemplos de diseños,
+        leer reseñas y realizar pedidos de manera fácil y rápida.
+        </p>
+        <p>
+        THE-EYE no es solo una tienda de camisetas, es un espacio donde la creatividad se encuentra 
+        con la moda. Invitamos a todos nuestros usuarios, a descubrir su estilo único, y  llevarlo
+         con orgullo. ¡Ven y exprésate con THE-EYE!
+        </p>
+         <p>
+          ¿Tienes alguna duda? Puedes contactarnos por WhatsApp al siguiente número:
+          {/*Enlace que permite iniciar una conversación en WhatsApp, contact number estiliza el 
+          numero de contacto, lo demas es para el estilo */}
+          <a href={`https://wa.me/593961620349`} className="contact-number whatsapp-link">
+          {/*Icono de WhatsApp junto al número de contacto */}
+            <FaWhatsapp className="whatsapp-icon" /> 0961620349
+          </a>
+        </p>
+       <h2>Realiza tu pedido personalizado</h2>
+      </div>
+
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchemas[step]}
@@ -56,6 +86,14 @@ export default function OrderForm() {
                 <label htmlFor="email">Email</label>
                 <Field id="email" name="email" type="email" />
                 <ErrorMessage name="email" component="div" className="error" />
+
+                <label htmlFor="phone">Teléfono</label>
+                <Field 
+                  id="phone" 
+                  name="phone" 
+                  type="tel" 
+                />
+                <ErrorMessage name="phone" component="div" className="error" />
               </div>
             )}
 
@@ -80,6 +118,7 @@ export default function OrderForm() {
               <div className="form-step confirmation">
                 <p><strong>Nombre:</strong> {values.name}</p>
                 <p><strong>Email:</strong> {values.email}</p>
+                <p><strong>Teléfono:</strong> {values.phone}</p>
                 <p><strong>Descripción:</strong> {values.description}</p>
                 <p><strong>Archivo:</strong> {values.file?.name}</p>
               </div>
@@ -100,4 +139,4 @@ export default function OrderForm() {
       </Formik>
     </section>
   );
-}
+} 

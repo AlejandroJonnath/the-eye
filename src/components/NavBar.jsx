@@ -29,10 +29,10 @@ export default function NavBar() {
               <a href="/productos">Productos</a>
             </li>
             <li>
-              <a href="/servicios">Servicios</a>
+              <a href="/OrderForm">Servicios</a>
             </li>
             <li>
-              <a href="/galeria">Galería</a>
+              <a href="/Galeria">Galería</a>
             </li>
             <li>
               <a href="/testimonios">Testimonios</a>

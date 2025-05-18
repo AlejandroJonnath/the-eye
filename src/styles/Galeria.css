@@ -1,0 +1,200 @@
+/* Galeria.css */
+
+.order-section {
+  padding: 4rem 2rem;
+  background: #111;
+  color: #eaeaea;
+  border-radius: 12px;
+  margin: 4rem 0;
+  animation: fadeInUp 1s both;
+}
+
+.order-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.store-description {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.store-description p {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #222; /* Fondo oscuro para contrastar con imágenes blancas */
+  border: 1px solid #333;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+  border-bottom: 1px solid #333; /* Separador entre imagen y texto */
+}
+
+.gallery-item:hover .gallery-image {
+  opacity: 0.8;
+}
+
+.image-info {
+  padding: 1.5rem;
+  background: #222;
+}
+
+.image-info h3 {
+  margin: 0 0 0.5rem;
+  color: var(--color-accent);
+  font-size: 1.2rem;
+}
+
+.image-info p {
+  margin: 0;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* Estilos para el modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  background: #222;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #333;
+}
+
+@media (min-width: 768px) {
+  .modal-content {
+    flex-direction: row;
+    max-height: 80vh;
+  }
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  background: #fff; /* Fondo blanco para las imágenes en el modal */
+}
+
+@media (min-width: 768px) {
+  .modal-image {
+    width: 60%;
+    max-height: none;
+  }
+}
+
+.modal-info {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-info h3 {
+  margin-top: 0;
+  color: var(--color-accent);
+  font-size: 1.5rem;
+}
+
+.modal-info p {
+  color: #ccc;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.close-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+  background: var(--color-accent);
+  color: #000;
+}
+
+.btn-next {
+  margin-top: auto;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: var(--color-gradient-start);
+  color: #fff;
+  align-self: flex-start;
+}
+
+.btn-next:hover {
+  background: var(--color-gradient-end);
+  transform: translateY(-2px);
+}
+
+/* Animación para fadeInUp */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

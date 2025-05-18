@@ -67,4 +67,36 @@
     background: var(--color-gradient-end);
     transform: translateY(-2px);
   }
+  .order-form input[type="text"],
+.order-form input[type="email"],
+.order-form input[type="tel"],
+.order-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: #222;
+  color: var(--color-contrast);
+}
+/* Estilo para el enlace de WhatsApp */
+.whatsapp-link {
+  display: inline-flex; /* Permite alinear el icono y el texto en línea */
+  align-items: center; /* Centra verticalmente el contenido */
+  margin-left: 8px; /* Espacio a la izquierda del enlace */
+  color: #25D366; /* Color verde característico de WhatsApp */
+  text-decoration: none; /* Sin subrayado en el enlace */
+  font-weight: bold; /* Texto en negrita */
+  transition: all 0.3s ease; /* Transición suave para efectos hover */
+}
+
+/* Efecto hover para el enlace de WhatsApp */
+.whatsapp-link:hover {
+  color: #128C7E; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo para el icono de WhatsApp dentro del enlace */
+.whatsapp-icon {
+  margin-right: 8px; /* Espacio a la derecha del icono */
+  font-size: 1.2em; /* Tamaño del icono */
+}
   

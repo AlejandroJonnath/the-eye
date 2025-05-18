@@ -6,7 +6,7 @@ export default function OrderPage() {
   return (
     <>
       <NavBar />
-      <OrderForm />
+      <OrderForm/>
       <Footer />
     </>
   );
