@@ -90,8 +90,6 @@ const StyledWrapper = styled.div`
   }
 
   .card .img {
-    width: 8em;
-    height: 8em;
     background: white;
     border-radius: 20px;
     margin: auto;

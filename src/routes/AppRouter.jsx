@@ -7,7 +7,7 @@ import BankInfoPage from '../pages/BankInfoPage';
 import LoginPage from '../pages/LoginPage';
 import OrderForm from '../sections/OrderForm';
 import Galeria from '../sections/Galeria';
-
+import LoginAdmin from '../components/loginAdmin';
 
 
 
@@ -22,6 +22,7 @@ export default function AppRouter() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/OrderForm" element={<OrderForm />} />
         <Route path="/Galeria" element={<Galeria />} />
+        <Route path="/loginAdmin" element={<LoginAdmin />} />
       </Routes>
     </BrowserRouter>
   );

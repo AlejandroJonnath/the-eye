@@ -1,11 +1,9 @@
 .footer {
-  background: linear-gradient(90deg, #181818 0%, #23233a 100%);
+  background: linear-gradient(90deg, #2d2d2d 0%, #353535 100%);
   padding: 2.5rem 0 1.2rem 0;
   color: #fff;
   animation: fadeInUp 1s both;
   box-shadow: 0 -4px 24px rgba(0,0,0,0.18);
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
   position: relative;
   z-index: 10;
 }

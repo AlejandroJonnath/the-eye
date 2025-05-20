@@ -10,12 +10,12 @@ export default function Hero() {
         ¡Expresa tu personalidad con cada prenda!
       </p>
       <ul className="hero-benefits">
-        <li>✔️ Envíos a todo Quito</li>
-        <li>✔️ Materiales premium y ecológicos</li>
-        <li>✔️ Atención personalizada</li>
-        <li>✔️ Promociones exclusivas cada mes</li>
+        <li>Envíos a todo Quito</li>
+        <li>Materiales premium y ecológicos</li>
+        <li>Atención personalizada</li>
+        <li>Promociones exclusivas cada mes</li>
       </ul>
       <a href="#productos" className="hero-cta">Ver productos</a>
     </section>
-  );
+  );
 }

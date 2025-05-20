@@ -3,11 +3,13 @@ import { FiMenu, FiX, FiUser } from 'react-icons/fi';
 import Lottie from 'lottie-react';
 import shopCarAnimation from '../assets/shopCar.json';
 import BankInfo from './BankInfo';
+import ConfModal from './modal/ConfModal';
 import '../styles/NavBar.css';
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
   const [showBank, setShowBank] = useState(false);
+  const [showConfModal, setShowConfModal] = useState(false); // <-- Estado para el modal
 
   return (
     <>
@@ -54,7 +56,11 @@ export default function NavBar() {
               className="cart-animation"
             />
           </button>
-          <button className="login-button" aria-label="Iniciar sesión">
+          <button
+            className="login-button"
+            aria-label="Iniciar sesión"
+            onClick={() => setShowConfModal(true)} // <-- Mostrar modal al hacer click
+          >
             <FiUser size={22} />
             <span className="login-text">Iniciar sesión</span>
           </button>
@@ -62,6 +68,24 @@ export default function NavBar() {
       </header>
 
       {showBank && <BankInfo onClose={() => setShowBank(false)} />}
+      {showConfModal && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: 'rgba(0,0,0,0.5)',
+            zIndex: 2000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+          onClick={() => setShowConfModal(false)}
+        >
+          <div onClick={e => e.stopPropagation()}>
+            <ConfModal />
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -1,22 +1,25 @@
+/* Importa Google Fonts antes de cualquier regla */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
 
 :root {
-  --font-primary: 'Poppins', sans-serif;
-  --color-bg: #1a120b; /* Deep brown-black base */
-  --color-contrast: #f5e8c7; /* Warm cream for text */
-  --color-accent: #d98236; /* Primary copper tone */
-  --color-accent-light: #e8a35a; /* Lighter copper */
-  --color-accent-dark: #b56a2b; /* Darker copper */
-  --color-gradient-start: #d98236; /* Copper */
-  --color-gradient-end: #9c4a1a; /* Rust */
+  --font-primary: 'Exo 2', sans-serif;
+  --color-bg: #111419; /* Deep brown-black base */
+  --color-contrast: #ffffff; /* Warm cream for text */
+  --color-accent: #ebc44e; /* Primary copper tone */
+  --color-accent-light: #ebc44e; /* Lighter copper */
+  --color-accent-dark: #ebc44e; /* Darker copper */
+  --color-gradient-start: #303030; /* Copper */
+  --color-gradient-end: #4a4a4a; /* Rust */
   --transition-fast: 0.3s ease-in-out;
   --transition-slow: 0.6s ease;
   
   /* Copper palette extras */
-  --color-surface: #f70b0b; /* Dark brown surface */
-  --color-border: #4a3a24; /* Copper patina border */
-  --color-hover: #3d2e1c; /* Hover state */
-  --color-muted: #8a7a65; /* Muted brown-gray */
+  --color-surface: #212121; /* Dark brown surface */
+  --color-border: #111419; /* Copper patina border */
+  --color-hover: #111419; /* Hover state */
+  --color-muted: #9a864a; /* Muted brown-gray */
 }
+
 
 * {
   margin: 0;
@@ -58,6 +61,8 @@ img {
 main {
   padding: 2rem;
   background: var(--color-bg);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* Copper-themed typography */
@@ -66,6 +71,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   margin-bottom: 1rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  margin-top: 3rem;
 }
 
 p {
