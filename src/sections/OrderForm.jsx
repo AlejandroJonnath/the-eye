@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FaWhatsapp } from 'react-icons/fa';
+import ModalOrderForm from '../components/modalOrderForm.jsx';
 
 export default function OrderForm() {
   const steps = ['Datos de contacto', 'Diseño', 'Confirmación'];
-  
+
   const validationSchemas = [
     Yup.object({
       name: Yup.string().required('Nombre es requerido'),
@@ -23,6 +24,7 @@ export default function OrderForm() {
   ];
 
   const [step, setStep] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const initialValues = { 
     name: '', 
     email: '', 
@@ -36,14 +38,14 @@ export default function OrderForm() {
       setStep(step + 1);
       actions.setTouched({});
     } else {
-      console.log('Pedido enviado:', values);
-      alert('¡Tu pedido ha sido enviado!');
+      setShowModal(true);
       actions.resetForm();
       setStep(0);
     }
   };
 
   const handleBack = () => setStep(step - 1);
+
   return (
     <section id="order" className="order-section">
       <h2>Servicios</h2>
@@ -60,10 +62,7 @@ export default function OrderForm() {
         </p>
          <p>
           ¿Tienes alguna duda? Puedes contactarnos por WhatsApp al siguiente número:
-          {/*Enlace que permite iniciar una conversación en WhatsApp, contact number estiliza el 
-          numero de contacto, lo demas es para el estilo */}
           <a href={`https://wa.me/593961620349`} className="contact-number whatsapp-link">
-          {/*Icono de WhatsApp junto al número de contacto */}
             <FaWhatsapp className="whatsapp-icon" /> 0961620349
           </a>
         </p>
@@ -137,6 +136,8 @@ export default function OrderForm() {
           </Form>
         )}
       </Formik>
+
+      <ModalOrderForm show={showModal} onClose={() => setShowModal(false)} />
     </section>
   );
-} 
+}
