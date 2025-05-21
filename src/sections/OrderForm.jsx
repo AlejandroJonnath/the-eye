@@ -62,10 +62,12 @@ export default function OrderForm() {
         </p>
          <p>
           ¿Tienes alguna duda? Puedes contactarnos por WhatsApp al siguiente número:
-          <a href={`https://wa.me/593961620349`} className="contact-number whatsapp-link">
+        </p>
+        <div className="whatsapp-number">
+          <a href="https://wa.me/593961620349" className="whatsapp-link" target="_blank" rel="noopener noreferrer">
             <FaWhatsapp className="whatsapp-icon" /> 0961620349
           </a>
-        </p>
+        </div>
        <h2>Realiza tu pedido personalizado</h2>
       </div>
 

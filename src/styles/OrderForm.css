@@ -25,6 +25,8 @@
   }
   .order-form input[type="text"],
   .order-form input[type="email"],
+  .order-form input[type="tel"],
+  .order-form input[type="file"],
   .order-form textarea {
     width: 100%;
     padding: 0.75rem;
@@ -32,10 +34,25 @@
     border-radius: 8px;
     background: #222;
     color: var(--color-contrast);
+    font-size: 1rem;
+    transition: background 0.18s, border 0.18s, color 0.18s;
   }
-  .order-form input[type="file"] {
-    color: var(--color-contrast);
+
+  .order-form input[type="text"]:hover,
+  .order-form input[type="email"]:hover,
+  .order-form input[type="tel"]:hover,
+  .order-form input[type="file"]:hover,
+  .order-form textarea:hover,
+  .order-form input[type="text"]:focus,
+  .order-form input[type="email"]:focus,
+  .order-form input[type="tel"]:focus,
+  .order-form input[type="file"]:focus,
+  .order-form textarea:focus {
+    background: #181818;
+    border: 1px solid #ffdf2c;
+    color: #ffdf2c;
   }
+
   .error {
     color: var(--color-accent);
     font-size: 0.9rem;
@@ -66,4 +83,35 @@
   .btn-next:hover {
     background: var(--color-gradient-end);
     transform: translateY(-2px);
- }
+  }
+
+.whatsapp-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.2rem 0 2rem 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #25D366; /* Verde WhatsApp */
+  text-align: center;
+  gap: 0.5em;
+}
+
+.whatsapp-link {
+  color: #25D366;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.whatsapp-link:hover {
+  color: #128C7E;
+  text-decoration: underline;
+}
+
+.whatsapp-icon {
+  font-size: 2rem;
+}

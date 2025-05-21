@@ -8,8 +8,8 @@ import LoginPage from '../pages/LoginPage';
 import OrderForm from '../sections/OrderForm';
 import Galeria from '../sections/Galeria';
 import LoginAdmin from '../components/loginAdmin';
-
-
+import Contacto from '../sections/Contacto'; // Agrega esta línea
+import Blog from '../sections/Blog'; // Agrega esta línea
 
 export default function AppRouter() {
   return (
@@ -23,6 +23,8 @@ export default function AppRouter() {
         <Route path="/OrderForm" element={<OrderForm />} />
         <Route path="/Galeria" element={<Galeria />} />
         <Route path="/loginAdmin" element={<LoginAdmin />} />
+        <Route path="/Contacto" element={<Contacto />} /> {/* <-- Agrega esta línea */}
+        <Route path="/blog" element={<Blog />} /> {/* <-- Agrega esta línea */}
       </Routes>
     </BrowserRouter>
   );

@@ -5,6 +5,7 @@ import About from '../sections/About';
 import Services from '../sections/Services';
 import SocialLinks from '../sections/SocialLinks';
 import Footer from '../components/Footer';
+import HelpModal from '../components/modal/helpModal'; // importa aquí
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Services />
       <SocialLinks />
       <Footer />
+      <HelpModal /> {/* anclado en la esquina */}
     </>
   );
 }

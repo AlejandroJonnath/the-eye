@@ -1,50 +1,66 @@
 import { useState } from 'react';
-import { FiMenu, FiX, FiUser } from 'react-icons/fi';
-import Lottie from 'lottie-react';
-import shopCarAnimation from '../assets/shopCar.json';
-import BankInfo from './BankInfo';
-import ConfModal from './modal/ConfModal';
-import '../styles/NavBar.css';
+import { FiMenu, FiX, FiUser } from 'react-icons/fi'; // Iconos de react-icons
+import Lottie from 'lottie-react'; // Animaciones Lottie
+import shopCarAnimation from '../assets/shopCar.json'; // Animación del carrito de compras
+import BankInfo from './BankInfo'; // Componente de información bancaria
+import ConfModal from './modal/ConfModal'; // Componente de modal de confirmación/login
+import { Link } from 'react-router-dom'; // Link de React Router para navegación SPA
+import '../styles/NavBar.css'; // Estilos CSS de la barra de navegación
 
 export default function NavBar() {
+  // Estado para abrir/cerrar el menú en móvil/tablet
   const [open, setOpen] = useState(false);
+  // Estado para mostrar el modal de información bancaria
   const [showBank, setShowBank] = useState(false);
-  const [showConfModal, setShowConfModal] = useState(false); // <-- Estado para el modal
+  // Estado para mostrar el modal de confirmación/login
+  const [showConfModal, setShowConfModal] = useState(false); 
 
   return (
     <>
+      {/* Barra de navegación principal */}
       <header className="navbar">
+        {/* Logo y marca */}
         <div className="brand">
           <img src="/logo.jpg" alt="THE EYE" className="logo" />
         </div>
 
+        {/* Botón para abrir/cerrar el menú en dispositivos móviles */}
         <button className="nav-toggle" onClick={() => setOpen(!open)} aria-label="Menú">
           {open ? <FiX size={24} /> : <FiMenu size={24} />}
         </button>
 
+        {/* Menú de navegación */}
         <nav className={open ? 'nav open' : 'nav'}>
           <ul>
             <li>
+              {/* Enlace a la página de inicio */}
               <a href="/">Inicio</a>
             </li>
             <li>
+              {/* Enlace a la página de productos */}
               <a href="/productos">Productos</a>
             </li>
             <li>
+              {/* Enlace a la página de servicios */}
               <a href="/OrderForm">Servicios</a>
             </li>
             <li>
+              {/* Enlace a la galería */}
               <a href="/Galeria">Galería</a>
             </li>
             <li>
-              <a href="/testimonios">Testimonios</a>
+              {/* Enlace a la página de contacto usando React Router */}
+              <Link to="/Contacto">Contacto</Link> 
             </li>
             <li>
+              {/* Enlace al blog */}
               <a href="/blog">Blog</a>
             </li>
           </ul>
         </nav>
+        {/* Acciones de la barra de navegación: carrito y login */}
         <div className="navbar-actions">
+          {/* Botón para mostrar información bancaria */}
           <button
             className="cart-button"
             onClick={() => setShowBank(true)}
@@ -56,10 +72,11 @@ export default function NavBar() {
               className="cart-animation"
             />
           </button>
+          {/* Botón para mostrar el modal de inicio de sesión */}
           <button
             className="login-button"
             aria-label="Iniciar sesión"
-            onClick={() => setShowConfModal(true)} // <-- Mostrar modal al hacer click
+            onClick={() => setShowConfModal(true)} 
           >
             <FiUser size={22} />
             <span className="login-text">Iniciar sesión</span>
@@ -67,7 +84,9 @@ export default function NavBar() {
         </div>
       </header>
 
+      {/* Modal de información bancaria */}
       {showBank && <BankInfo onClose={() => setShowBank(false)} />}
+      {/* Modal de confirmación/login */}
       {showConfModal && (
         <div
           style={{

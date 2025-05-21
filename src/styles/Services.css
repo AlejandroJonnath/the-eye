@@ -47,3 +47,34 @@
   text-align: center;
   transition: transform var(--transition-slow), box-shadow var(--transition-slow);
 }
+.solicitud-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.solicitud-diseño{
+display: inline-block;
+  margin-top: 1rem;
+  padding: 0.95rem 2.2rem;
+  background: linear-gradient(90deg, #bf9929 0%, #c6af6a 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0 4px 24px 0 rgba(255, 215, 0, 0.18);
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  z-index: 1;
+}
+
+.solicitud-diseño:hover, .solicitud-diseño:focus {
+  background: linear-gradient(90deg, #c6af6a 0%, #bf9929 100%);
+  color: #fff;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 32px 0 rgba(255, 215, 0, 0.28);
+  box-shadow: 0 0 16px 4px #fff, 0 0 32px 8px #fff7;
+}
