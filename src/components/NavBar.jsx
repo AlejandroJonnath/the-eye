@@ -55,20 +55,8 @@ export default function NavBar() {
             </li>
           </ul>
         </nav>
-        {/* Acciones de la barra de navegación: carrito y login */}
+        {/* Acciones de la barra de navegación: solo login */}
         <div className="navbar-actions">
-          {/* Botón para mostrar información bancaria */}
-          <button
-            className="cart-button"
-            onClick={() => setShowBank(true)}
-            aria-label="Ver información bancaria"
-          >
-            <Lottie
-              animationData={shopCarAnimation}
-              loop={true}
-              className="cart-animation"
-            />
-          </button>
           {/* Botón para mostrar el modal de inicio de sesión */}
           <button
             className="login-button"
