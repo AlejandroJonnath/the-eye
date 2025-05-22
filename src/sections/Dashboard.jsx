@@ -280,7 +280,7 @@ const Dashboard = () => {
   });
 
   return (
-    <div style={{
+    <div className="dashboard-root" style={{
       display: "flex",
       minHeight: "100vh",
       fontFamily: "sans-serif",
@@ -295,6 +295,61 @@ const Dashboard = () => {
         }
         .chart-anim {
           animation: fadeInUp 1.2s cubic-bezier(.4,1.5,.6,1);
+        }
+        @media (max-width: 900px) {
+          .dashboard-root {
+            flex-direction: column !important;
+          }
+          aside {
+            width: 100% !important;
+            min-height: unset !important;
+            box-shadow: none !important;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            padding: 16px !important;
+          }
+          aside ul {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 12px !important;
+            margin: 0 !important;
+          }
+          aside li {
+            margin: 0 !important;
+          }
+          main {
+            padding: 16px !important;
+          }
+        }
+        @media (max-width: 600px) {
+          main {
+            padding: 8px !important;
+          }
+          section {
+            flex-direction: column !important;
+            gap: 12px !important;
+          }
+          .chart-anim {
+            min-width: 0 !important;
+            width: 100% !important;
+            padding: 8px !important;
+          }
+          h1, h2, h3 {
+            font-size: 1.1em !important;
+          }
+        }
+        @media (max-width: 400px) {
+          aside {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            padding: 8px !important;
+          }
+          aside ul {
+            flex-direction: column !important;
+            gap: 6px !important;
+          }
         }
         `}
       </style>
