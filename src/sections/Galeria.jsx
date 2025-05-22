@@ -2,6 +2,7 @@ import '../styles/Galeria.css';
 import React, { useState } from 'react';
 import NavBar from '../components/NavBar';   // Importa el NavBar
 import Footer from '../components/Footer';    // Importa el Footer
+import { useClickContext } from "../context/ClickContext";
 
 export default function Galeria() {
   // Array de imágenes de ejemplo (reemplaza con tus propias imágenes)
@@ -45,6 +46,7 @@ export default function Galeria() {
   ]);
 
   const [selectedImage, setSelectedImage] = useState(null);
+  const { addClick } = useClickContext();
 
   return (
     <>
@@ -69,11 +71,14 @@ export default function Galeria() {
         </div>
 
         <div className="gallery-grid">
-          {images.map((image) => (
+          {images.map((image, idx) => (
             <div 
               key={image.id} 
               className="gallery-item"
-              onClick={() => setSelectedImage(image)}
+              onClick={() => {
+                setSelectedImage(image);
+                addClick(idx); // <-- Aquí sumas el click
+              }}
             >
               <img 
                 src={image.src} 

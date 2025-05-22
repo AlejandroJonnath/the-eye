@@ -7,7 +7,14 @@ const BOT_NAME = "THE EYE Bot";
 const defaultResponses = [
     {
         keywords: [
-            "hola", "buenas", "saludos", "hey", "holi", "hello", "hi"
+            "hola", "buenas", "saludos",
+             "hey", "holi", "hello",
+              "hi", "helouda", "saludo",
+               "buenas tardes", "buenas noches", "buen día",
+                "qué tal", "qué hay", "cómo estás",
+                 "cómo va", "cómo andas", "cómo te va",
+                  "qué pasa", "qué sucede", "qué hay de nuevo",
+                   "qué me cuentas", "qué me dices", "qué tal va todo"
         ],
         response: "¡Hola! 👋 Soy THE EYE Bot. ¿Eres estudiante, autoridad o visitante? ¿En qué puedo ayudarte hoy?"
     },

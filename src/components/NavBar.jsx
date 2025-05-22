@@ -6,6 +6,7 @@ import BankInfo from './BankInfo'; // Componente de información bancaria
 import ConfModal from './modal/ConfModal'; // Componente de modal de confirmación/login
 import { Link } from 'react-router-dom'; // Link de React Router para navegación SPA
 import '../styles/NavBar.css'; // Estilos CSS de la barra de navegación
+import { useNavBarClickContext } from "../context/NavBarClickContext"; // Contexto para manejar clics en la barra de navegación
 
 export default function NavBar() {
   // Estado para abrir/cerrar el menú en móvil/tablet
@@ -14,6 +15,8 @@ export default function NavBar() {
   const [showBank, setShowBank] = useState(false);
   // Estado para mostrar el modal de confirmación/login
   const [showConfModal, setShowConfModal] = useState(false); 
+  // Contexto para manejar clics en la barra de navegación
+  const { addNavClick } = useNavBarClickContext();
 
   return (
     <>
@@ -33,28 +36,22 @@ export default function NavBar() {
         <nav className={open ? 'nav open' : 'nav'}>
           <ul>
             <li>
-              {/* Enlace a la página de inicio */}
-              <a href="/">Inicio</a>
+              <Link to="/" onClick={() => addNavClick("Inicio")}>Inicio</Link>
             </li>
             <li>
-              {/* Enlace a la página de productos */}
-              <a href="/productos">Productos</a>
+              <Link to="/productos" onClick={() => addNavClick("Productos")}>Productos</Link>
             </li>
             <li>
-              {/* Enlace a la página de servicios */}
-              <a href="/OrderForm">Servicios</a>
+              <Link to="/OrderForm" onClick={() => addNavClick("Servicios")}>Servicios</Link>
             </li>
             <li>
-              {/* Enlace a la galería */}
-              <a href="/Galeria">Galería</a>
+              <Link to="/Galeria" onClick={() => addNavClick("Galería")}>Galería</Link>
             </li>
             <li>
-              {/* Enlace a la página de contacto usando React Router */}
-              <Link to="/Contacto">Contacto</Link> 
+              <Link to="/Contacto" onClick={() => addNavClick("Contacto")}>Contacto</Link>
             </li>
             <li>
-              {/* Enlace al blog */}
-              <a href="/blog">Blog</a>
+              <Link to="/blog" onClick={() => addNavClick("Blog")}>Blog</Link>
             </li>
           </ul>
         </nav>

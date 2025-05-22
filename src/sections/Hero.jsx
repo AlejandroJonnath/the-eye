@@ -1,4 +1,5 @@
 import '../styles/Hero.css';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -15,7 +16,7 @@ export default function Hero() {
         <li>Atención personalizada</li>
         <li>Promociones exclusivas cada mes</li>
       </ul>
-      <a href="#productos" className="hero-cta">Ver productos</a>
+      <Link to="/productos" className="hero-cta">Ver productos</Link>
     </section>
-  );
+  );
 }
