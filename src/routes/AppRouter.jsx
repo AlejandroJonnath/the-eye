@@ -1,5 +1,6 @@
+// src/routes/AppRouter.jsx
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import ProductsPage from '../pages/ProductsPage';
 import OrderPage from '../pages/OrderPage';
@@ -14,20 +15,18 @@ import Dashboard from '../sections/Dashboard';
 
 export default function AppRouter() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/productos" element={<ProductsPage />} />
-        <Route path="/ordenar" element={<OrderPage />} />
-        <Route path="/informacion-bancaria" element={<BankInfoPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/OrderForm" element={<OrderForm />} />
-        <Route path="/Galeria" element={<Galeria />} />
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
-        <Route path="/dashboard" element={<Dashboard />} /> 
-        <Route path="/Contacto" element={<Contacto />} /> 
-        <Route path="/blog" element={<Blog />} /> 
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/productos" element={<ProductsPage />} />
+      <Route path="/ordenar" element={<OrderPage />} />
+      <Route path="/informacion-bancaria" element={<BankInfoPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/OrderForm" element={<OrderForm />} />
+      <Route path="/Galeria" element={<Galeria />} />
+      <Route path="/loginAdmin" element={<LoginAdmin />} />
+      <Route path="/dashboard" element={<Dashboard />} /> 
+      <Route path="/Contacto" element={<Contacto />} /> 
+      <Route path="/blog" element={<Blog />} /> 
+    </Routes>
   );
 }
