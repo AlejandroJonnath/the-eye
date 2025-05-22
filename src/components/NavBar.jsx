@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { FiMenu, FiX, FiUser } from 'react-icons/fi'; // Iconos de react-icons
-import Lottie from 'lottie-react'; // Animaciones Lottie
-import shopCarAnimation from '../assets/shopCar.json'; // Animación del carrito de compras
 import BankInfo from './BankInfo'; // Componente de información bancaria
 import ConfModal from './modal/ConfModal'; // Componente de modal de confirmación/login
 import { Link } from 'react-router-dom'; // Link de React Router para navegación SPA
@@ -24,7 +22,8 @@ export default function NavBar() {
       <header className="navbar">
         {/* Logo y marca */}
         <div className="brand">
-          <img src="/logo.jpg" alt="THE EYE" className="logo" />
+          {/* Usa ruta relativa para logo en public */}
+          <img src="logo.jpg" alt="THE EYE" className="logo" />
         </div>
 
         {/* Botón para abrir/cerrar el menú en dispositivos móviles */}

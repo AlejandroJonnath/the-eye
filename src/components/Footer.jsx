@@ -11,8 +11,8 @@ export default function Footer() {
       <div className="footer-content">
         {/* Sección de marca: logo y nombre de la tienda */}
         <div className="footer-brand">
-          {/* Logo de la tienda */}
-          <img src="/logo.jpg" alt="THE EYE Logo" className="footer-logo" />
+          {/* Usa ruta relativa para logo en public */}
+          <img src="logo.jpg" alt="THE EYE Logo" className="footer-logo" />
           {/* Nombre de la tienda */}
           <span className="footer-title">THE EYE</span>
         </div>

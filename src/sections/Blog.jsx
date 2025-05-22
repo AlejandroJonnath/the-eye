@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import styled from 'styled-components';
@@ -11,7 +12,7 @@ export default function Blog() {
         <div className="blog-container">
           <h1>La Historia de THE EYE</h1>
           <div className="logo-center">
-            <img src="/logo.jpg" alt="THE EYE Logo" className="blog-logo" />
+            <img src="logo.jpg" alt="THE EYE Logo" className="blog-logo" />
           </div>
           <p>
             <strong>THE EYE</strong> nació de una visión: crear un espacio donde la creatividad y la personalización se encuentren en cada producto. Todo comenzó con una simple pregunta: <em>¿Por qué conformarse con lo común cuando puedes tener algo único?</em>
@@ -33,8 +34,8 @@ export default function Blog() {
             Si buscas un regalo especial, un detalle único para tu espacio o simplemente quieres expresar tu estilo, <strong>THE EYE</strong> es tu mejor opción. ¡Atrévete a destacar y lleva contigo algo que hable de ti!
           </p>
           <div className="cta">
-            <a href="/productos" className="cta-btn">Descubre nuestros productos</a>
-            <a href="/OrderForm" className="cta-btn secondary">Personaliza el tuyo</a>
+            <Link to="/productos" className="cta-btn">Descubre nuestros productos</Link>
+            <Link to="/OrderForm" className="cta-btn secondary">Personaliza el tuyo</Link>
           </div>
         </div>
       </BlogWrapper>
