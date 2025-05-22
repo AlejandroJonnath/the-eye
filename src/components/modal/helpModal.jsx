@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom'; // <-- Agrega esto
 
 const Tooltip = () => {
+  const navigate = useNavigate(); // <-- Usa el hook
+
   const handleClick = () => {
-    window.location.href = "/Contacto";
+    navigate('/Contacto'); // <-- Navegación interna, respeta basename
   };
+
   return (
     <StyledWrapper>
       <div className="Social-Btn" onClick={handleClick}>

@@ -1,9 +1,11 @@
 import React from 'react';
 import ScrollReveal from './ScrollReveal';
-import pd1 from '../../public/logo.jpg';
 import '../styles/About.css';
 
 export default function About() {
+  const getImgSrc = (src) =>
+    `${window.location.pathname.startsWith('/the-eye') ? '/the-eye' : ''}/${src}`;
+
   return (
     <ScrollReveal className="about-wrapper">
       <section id="about" className="about-section">
@@ -17,9 +19,9 @@ export default function About() {
           <p> únicas que cuentan tu historia.</p>
         </div>
         <div className="about-image">
-          <img src= "/logo.jpg" alt="Equipo de THE EYE" />
+          <img src={getImgSrc('logo.jpg')} alt="Equipo de THE EYE" />
         </div>
       </section>
     </ScrollReveal>
- );
+  );
 }
