@@ -7,6 +7,12 @@ const BOT_NAME = "THE EYE Bot";
 const defaultResponses = [
     {
         keywords: [
+            "que venden", "qué venden", "qué ofrecen", "que ofrecen", "qué productos", "que productos", "qué tienen", "que tienen", "qué comercializan", "que comercializan", "qué puedo comprar", "que puedo comprar", "qué hay", "que hay"
+        ],
+        response: "Vendemos camisetas y realizamos pedidos a domicilio a nivel nacional. ¿Te gustaría ver nuestros productos o personalizar uno?"
+    },
+    {
+        keywords: [
             "hola", "buenas", "saludos",
              "hey", "holi", "hello",
               "hi", "helouda", "saludo",

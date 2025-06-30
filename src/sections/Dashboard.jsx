@@ -31,7 +31,7 @@ const dataUsuarios = [
 ];
 
 const dataReportes = [
-  { name: "Resueltos", value: 300 },
+  { name: "Resueltos", value: 300 }, //asd
   { name: "Pendientes", value: 120 },
   { name: "En proceso", value: 80 },
 ];
@@ -609,9 +609,11 @@ const Dashboard = () => {
         .dashboard-aside {
           backdrop-filter: blur(12px);
           border-right: 2px solid rgba(255,255,255,0.06);
+          transition: all 0.3s;
         }
         .dashboard-main {
           animation: fadeInUp 0.8s;
+          transition: padding 0.3s;
         }
         @media (max-width: 1100px) {
           .dashboard-root {
@@ -626,13 +628,24 @@ const Dashboard = () => {
             flex-direction: row !important;
             align-items: center !important;
             justify-content: space-between !important;
+            border-right: none !important;
+            border-bottom: 2px solid rgba(255,255,255,0.06) !important;
           }
           .dashboard-menu {
             flex-direction: row !important;
             gap: 10px !important;
+            width: auto !important;
+            margin-left: 16px !important;
           }
           .dashboard-main {
             padding: 18px !important;
+          }
+          .dashboard-aside h2 {
+            font-size: 1.2em !important;
+            margin-bottom: 0 !important;
+          }
+          .dashboard-aside button {
+            display: none !important;
           }
         }
         @media (max-width: 700px) {
@@ -658,12 +671,30 @@ const Dashboard = () => {
             flex-direction: column !important;
             align-items: flex-start !important;
             padding: 8px 4px !important;
+            border-bottom: none !important;
+            border-right: none !important;
           }
           .dashboard-menu {
             flex-direction: row !important;
             width: 100%;
             justify-content: space-around !important;
             gap: 0 !important;
+            margin-left: 0 !important;
+          }
+          .dashboard-aside h2 {
+            margin-bottom: 8px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .dashboard-main {
+            padding: 2px !important;
+          }
+          .dashboard-menu li {
+            font-size: 0.85em !important;
+            padding: 8px 8px !important;
+          }
+          .dashboard-aside h2 {
+            font-size: 1em !important;
           }
         }
         `}
