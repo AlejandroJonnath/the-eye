@@ -9,7 +9,7 @@ export default defineConfig({
     allowedHosts: [
       "8lianm-ip-157-100-138-201.tunnelmole.net",
       "r3cvdd-ip-157-100-138-201.tunnelmole.net",
-      "1daosf-ip-157-100-138-201.tunnelmole.net"
+      "vdoq26-ip-181-112-90-92.tunnelmole.net"
     ]
   }
 })

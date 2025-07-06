@@ -1,4 +1,7 @@
-/* Paleta de colores basada en NavBar.css */
+/* Importación de fuente moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Variables de color originales */
 :root {
   --chat-bg: #23233a;
   --chat-header-bg: #ffdf2c;
@@ -18,9 +21,25 @@
   --chat-btn-bg: #ffdf2c;
   --chat-btn-text: #23233a;
   --chat-btn-hover: #e1bc4b;
+  --duration: 0.3s;
+  --easing: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* FAB grande (no se usa si tienes el mini) */
+/* Reset básico y tipografía */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+body {
+  background: var(--chat-bg);
+  color: var(--chat-user-text);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* FAB grande */
 .chatbot-fab {
   position: fixed;
   bottom: 32px;
@@ -33,12 +52,16 @@
   width: 56px;
   height: 56px;
   font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background var(--duration) var(--easing), transform var(--duration) var(--easing);
 }
 .chatbot-fab:hover {
   background: var(--chat-fab-hover);
+  transform: scale(1.1);
 }
 
 /* Mini FAB */
@@ -51,8 +74,7 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  box-shadow: none;
-  transition: transform 0.2s;
+  transition: transform var(--duration) var(--easing);
 }
 .chatbot-mini-fab:hover {
   transform: scale(1.08);
@@ -73,26 +95,26 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: fadeInUp 0.3s;
   border: 2px solid var(--chat-border);
+  animation: fadeInUp var(--duration) ease-out;
   max-height: 500px;
   min-height: 420px;
-  backdrop-filter: blur(2px) saturate(120%);
+  backdrop-filter: blur(4px) saturate(130%);
 }
 
 /* Cabecera */
 .chatbot-header {
   background: var(--chat-header-bg);
   color: var(--chat-header-text);
-  font-weight: bold;
-  padding: 1rem;
+  font-weight: 600;
+  padding: 1rem 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+  font-size: 1.125rem;
+  letter-spacing: 0.5px;
   border-bottom: 1px solid #f5e16b;
-  box-shadow: 0 2px 8px #fff2;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.2);
 }
 
 /* Botón cerrar */
@@ -102,10 +124,11 @@
   font-size: 1.5rem;
   color: var(--chat-header-text);
   cursor: pointer;
-  transition: color 0.18s;
+  transition: color var(--duration);
 }
 .chatbot-close:hover {
   color: var(--chat-link);
+  transform: rotate(90deg);
 }
 
 /* Mensajes */
@@ -116,17 +139,17 @@
   background: var(--chat-bg);
   display: flex;
   flex-direction: column;
-  gap: 0.7em;
+  gap: 0.8em;
   max-height: 320px;
   scrollbar-width: thin;
   scrollbar-color: var(--chat-header-bg) var(--chat-bg);
 }
 .chatbot-messages::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 .chatbot-messages::-webkit-scrollbar-thumb {
   background: var(--chat-header-bg);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 .chatbot-messages::-webkit-scrollbar-track {
   background: var(--chat-bg);
@@ -135,16 +158,17 @@
 /* Burbujas */
 .chatbot-msg {
   max-width: 80%;
-  padding: 0.6em 1em;
+  padding: 0.75em 1.2em;
   border-radius: 16px;
-  margin-bottom: 0.2em;
-  font-size: 1rem;
+  font-size: 0.99rem;
   line-height: 1.4;
   word-break: break-word;
-  box-shadow: 0 2px 8px #0002;
-  transition: background 0.18s, color 0.18s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform var(--duration) var(--easing), opacity var(--duration) var(--easing);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: bubbleFadeIn var(--duration) var(--easing) forwards;
 }
-
 .chatbot-msg.bot {
   background: var(--chat-bot-bg);
   color: var(--chat-bot-text);
@@ -152,7 +176,6 @@
   border-bottom-left-radius: 4px;
   border-top-right-radius: 18px;
 }
-
 .chatbot-msg.user {
   background: var(--chat-user-bg);
   color: var(--chat-user-text);
@@ -161,18 +184,26 @@
   border-top-left-radius: 18px;
 }
 
-/* Enlaces dentro de los mensajes */
+/* Animación de aparición de burbujas */
+@keyframes bubbleFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enlaces dentro de mensajes */
 .chatbot-msg a {
   color: var(--chat-link);
-  font-weight: bold;
+  font-weight: 500;
   text-decoration: underline;
-  transition: color 0.18s;
-  word-break: break-all;
+  transition: color var(--duration), background var(--duration);
 }
 .chatbot-msg a:hover {
   color: #d98236;
-  background: #fff2;
+  background: rgba(255,255,255,0.2);
   border-radius: 4px;
+  padding: 2px 4px;
 }
 
 /* Área de input */
@@ -181,33 +212,34 @@
   border-top: 1px solid var(--chat-header-bg);
   background: var(--chat-input-bg);
 }
-
 .chatbot-input-area input {
   flex: 1;
   border: none;
-  padding: 0.8em;
+  padding: 0.85em 1em;
   font-size: 1rem;
   background: var(--chat-input-bg);
   color: var(--chat-input-text);
   outline: none;
+  transition: box-shadow var(--duration), background var(--duration);
   border-radius: 0 0 0 16px;
-  transition: background 0.18s, color 0.18s;
 }
-
+.chatbot-input-area input:focus {
+  box-shadow: inset 0 0 0 2px var(--chat-header-bg);
+}
 .chatbot-input-area button {
   background: var(--chat-btn-bg);
   color: var(--chat-btn-text);
   border: none;
-  padding: 0 1.2em;
-  font-weight: bold;
+  padding: 0 1.3em;
+  font-weight: 600;
   cursor: pointer;
   border-radius: 0 0 16px 0;
-  transition: background 0.2s, color 0.18s;
+  transition: background var(--duration), transform var(--duration);
   font-size: 1rem;
 }
 .chatbot-input-area button:hover {
   background: var(--chat-btn-hover);
-  color: var(--chat-header-text);
+  transform: translateY(-2px);
 }
 
 /* Responsive */
@@ -215,8 +247,6 @@
   .chatbot-window {
     right: 2vw;
     width: 98vw;
-    min-width: 0;
-    max-width: 100vw;
     border-radius: 12px;
     min-height: 320px;
     max-height: 80vh;
@@ -226,8 +256,33 @@
   }
 }
 
-/* Animación */
+/* Animación de entrada */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(40px);}
-  to { opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación sutil de escritura */
+.chatbot-msg.bot[data-typing="true"] {
+  position: relative;
+}
+.chatbot-msg.bot[data-typing="true"]::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--chat-bot-text);
+  margin-left: 6px;
+  animation: blinkDot 1s infinite steps(1);
+}
+@keyframes blinkDot {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }

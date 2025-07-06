@@ -1,11 +1,10 @@
 import '../styles/Galeria.css';
 import React, { useState } from 'react';
-import NavBar from '../components/NavBar';   // Importa el NavBar
-import Footer from '../components/Footer';    // Importa el Footer
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 import { useClickContext } from "../context/ClickContext";
 
 export default function Galeria() {
-  // Array de imágenes de ejemplo (reemplaza con tus propias imágenes)
   const [images] = useState([
     {
       id: 1,
@@ -45,46 +44,79 @@ export default function Galeria() {
     }
   ]);
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImageIdx, setSelectedImageIdx] = useState(null);
   const { addClick } = useClickContext();
+
+  // Navegación modal
+  const handlePrev = (e) => {
+    e.stopPropagation();
+    setSelectedImageIdx((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+  const handleNext = (e) => {
+    e.stopPropagation();
+    setSelectedImageIdx((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  // Accesibilidad: cerrar modal con ESC
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedImageIdx !== null) {
+        if (e.key === 'Escape') setSelectedImageIdx(null);
+        if (e.key === 'ArrowLeft') handlePrev(e);
+        if (e.key === 'ArrowRight') handleNext(e);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+    // eslint-disable-next-line
+  }, [selectedImageIdx]);
 
   return (
     <>
-      <NavBar /> {/* Muestra el NavBar arriba */}
+      <NavBar />
       <section id="Galeria" className="order-section">
         <h2>Galería de Diseños Creados</h2>
         <div className="store-description">
+          <span className="desc-badge">Galería Premium</span>
           <p style={{ fontWeight: 'bold', fontSize: '1.15em', color: '#FFD700' }}>
             ¡Descubre la inspiración y creatividad de nuestra comunidad!
           </p>
           <p>
-            Sumérgete en una galería vibrante donde cada diseño cuenta una historia única. 
-            Aquí encontrarás camisetas personalizadas, creaciones originales y ediciones limitadas, 
-            todas hechas con pasión y dedicación por nuestros clientes y artistas. 
-            <br /><br />
-            ¿Te imaginas luciendo una de estas piezas exclusivas? 
-            <span style={{ color: '#FFD700', fontWeight: 'bold' }}> ¡Hazla tuya o crea la tuya propia!</span>
-            <br /><br />
-            Haz clic en cualquier diseño para verlo en detalle y pedir el tuyo personalizado. 
-            ¡Exprésate, destaca y lleva tu estilo al siguiente nivel con <span style={{ color: '#FFD700', fontWeight: 'bold' }}>THE EYE</span>!
+            Sumérgete en una galería vibrante donde cada diseño cuenta una historia única.
+            Aquí encontrarás camisetas personalizadas, creaciones originales y ediciones limitadas,
+            todas hechas con pasión y dedicación por nuestros clientes y artistas.
           </p>
         </div>
 
         <div className="gallery-grid">
           {images.map((image, idx) => (
-            <div 
-              key={image.id} 
+            <div
+              key={image.id}
               className="gallery-item"
+              tabIndex={0}
+              aria-label={`Ver detalle de ${image.title}`}
               onClick={() => {
-                setSelectedImage(image);
-                addClick(idx); // <-- Aquí sumas el click
+                setSelectedImageIdx(idx);
+                addClick(idx);
+              }}
+              onKeyDown={e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setSelectedImageIdx(idx);
+                  addClick(idx);
+                }
               }}
             >
-              <img 
-                src={image.src} 
-                alt={image.title} 
-                className="gallery-image"
-              />
+              <div className="gallery-img-wrapper">
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className="gallery-image"
+                  loading="lazy"
+                />
+                <div className="gallery-hover-overlay">
+                  <span>Ver detalle</span>
+                </div>
+              </div>
               <div className="image-info">
                 <h3>{image.title}</h3>
                 <p>{image.description}</p>
@@ -93,28 +125,49 @@ export default function Galeria() {
           ))}
         </div>
 
-        {selectedImage && (
-          <div className="modal-overlay" onClick={() => setSelectedImage(null)}>
+        {selectedImageIdx !== null && (
+          <div className="modal-overlay" onClick={() => setSelectedImageIdx(null)}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
-              <span 
-                className="close-modal" 
-                onClick={() => setSelectedImage(null)}
+              <button
+                className="close-modal"
+                aria-label="Cerrar"
+                onClick={() => setSelectedImageIdx(null)}
+                tabIndex={0}
               >
                 &times;
-              </span>
-              <img 
-                src={selectedImage.src} 
-                alt={selectedImage.title} 
+              </button>
+              <button
+                className="modal-arrow modal-arrow-left"
+                aria-label="Anterior"
+                onClick={handlePrev}
+                tabIndex={0}
+              >
+                &#8592;
+              </button>
+              <img
+                src={images[selectedImageIdx].src}
+                alt={images[selectedImageIdx].title}
                 className="modal-image"
               />
+              <button
+                className="modal-arrow modal-arrow-right"
+                aria-label="Siguiente"
+                onClick={handleNext}
+                tabIndex={0}
+              >
+                &#8594;
+              </button>
               <div className="modal-info">
-                <h3>{selectedImage.title}</h3>
-                <p>{selectedImage.description}</p>
-                <button 
+                <h3>{images[selectedImageIdx].title}</h3>
+                <p>{images[selectedImageIdx].description}</p>
+                <div className="modal-indicator">
+                  {selectedImageIdx + 1} / {images.length}
+                </div>
+                <button
                   className="btn-next"
                   onClick={() => {
-                    window.location.href = '#order';
-                    setSelectedImage(null);
+                    window.location.href = '#servicios';
+                    setSelectedImageIdx(null);
                   }}
                 >
                   ¡Quiero este diseño!
@@ -124,7 +177,7 @@ export default function Galeria() {
           </div>
         )}
       </section>
-      <Footer /> {/* Muestra el Footer abajo */}
+      <Footer />
     </>
   );
 }
