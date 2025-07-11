@@ -61,7 +61,7 @@ export default function Hero() {
             key={i}
             className="flip-card"
             style={{
-              minHeight: "180px", // Tarjetas más pequeñas
+              minHeight: "180px",
               aspectRatio: "3/4"
             }}
           >
@@ -87,6 +87,47 @@ export default function Hero() {
           </div>
         ))}
       </div>
+      <style>
+        {`
+          @media (max-width: 1200px) {
+            .product-grid {
+              grid-template-columns: repeat(3, 1fr) !important;
+              gap: 1.2rem !important;
+            }
+          }
+          @media (max-width: 992px) {
+            .product-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 1.5rem !important;
+            }
+            .flip-card {
+              min-height: 220px !important;
+              max-width: 99vw !important;
+              display: flex !important;
+              flex-direction: column !important;
+              justify-content: center !important;
+              padding: 1rem !important; /* Espacio interno */
+              box-sizing: border-box !important;
+            }
+            .image-container {
+              height: 170px !important;
+              padding: 0.5rem !important; /* Espacio alrededor de la imagen */
+              display: flex !important;
+              align-items: center !important;
+              justify-content: center !important;
+            }
+            .image-container img {
+              width: 100% !important;
+              height: 100% !important;
+              object-fit: contain !important;
+              border-radius: 1rem !important;
+              box-shadow: 0 2px 8px #0002 !important;
+              margin: 0 !important;
+              display: block !important;
+            }
+          }
+        `}
+      </style>
     </section>
   );
 }
