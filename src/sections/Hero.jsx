@@ -92,26 +92,29 @@ export default function Hero() {
           @media (max-width: 1200px) {
             .product-grid {
               grid-template-columns: repeat(3, 1fr) !important;
-              gap: 1.2rem !important;
+              gap: 1.5rem !important;
             }
           }
           @media (max-width: 992px) {
             .product-grid {
               grid-template-columns: repeat(2, 1fr) !important;
-              gap: 1.5rem !important;
+              gap: 2rem !important;
+              justify-items: center !important;
             }
             .flip-card {
-              min-height: 220px !important;
-              max-width: 99vw !important;
+              min-height: 380px !important;
+              max-width: 370px !important;
+              width: 100% !important;
               display: flex !important;
               flex-direction: column !important;
               justify-content: center !important;
-              padding: 1rem !important; /* Espacio interno */
+              padding: 2rem !important;
               box-sizing: border-box !important;
+              margin: 0 auto !important;
             }
             .image-container {
-              height: 170px !important;
-              padding: 0.5rem !important; /* Espacio alrededor de la imagen */
+              height: 300px !important;
+              padding: 1rem !important;
               display: flex !important;
               align-items: center !important;
               justify-content: center !important;
@@ -121,9 +124,25 @@ export default function Hero() {
               height: 100% !important;
               object-fit: contain !important;
               border-radius: 1rem !important;
-              box-shadow: 0 2px 8px #0002 !important;
+              box-shadow: 0 2px 12px #0003 !important;
               margin: 0 !important;
               display: block !important;
+            }
+          }
+          @media (max-width: 600px) {
+            .product-grid {
+              grid-template-columns: 1fr !important;
+              gap: 2.2rem !important;
+              justify-items: center !important;
+            }
+            .flip-card {
+              min-height: 420px !important;
+              max-width: 95vw !important;
+              width: 100% !important;
+              padding: 2.2rem 1rem !important;
+            }
+            .image-container {
+              height: 220px !important;
             }
           }
         `}

@@ -1,48 +1,42 @@
 import '../styles/Footer.css';
 
 /**
- * Componente Footer
- * Renderiza el pie de página del sitio web con información de marca, enlaces rápidos, contacto y redes sociales.
+ * Componente Footer Mejorado
+ * Pie de página profesional, accesible y responsive para THE EYE.
  */
 export default function Footer() {
   return (
     <footer className="footer" aria-label="Pie de página de THE EYE">
-      {/* Contenedor principal del contenido del footer */}
       <div className="footer-content">
-        {/* Sección de marca: logo y nombre de la tienda */}
+        {/* Sección de marca */}
         <div className="footer-brand">
-          {/* Enlace al inicio con el logo de la tienda */}
           <a href="#inicio" aria-label="Ir al inicio">
             <img src="/logo.jpg" alt="Logo de THE EYE" className="footer-logo" />
           </a>
-          {/* Nombre de la tienda */}
-          <span className="footer-title">THE EYE</span>
-          {/* Eslogan de la tienda */}
-          <span className="footer-slogan">Expresa tu estilo, viste diferente.</span>
+          <div>
+            <span className="footer-title">THE EYE</span>
+            <span className="footer-slogan">Expresa tu estilo, viste diferente.</span>
+          </div>
         </div>
-        {/* Navegación de enlaces rápidos dentro del footer */}
+        {/* Sección de enlaces rápidos */}
         <nav className="footer-links" aria-label="Enlaces rápidos">
-          {/* Enlace rápido a la sección de productos */}
-          <a href="#productos">Productos</a>
-          {/* Enlace rápido a la sección de servicios */}
-          <a href="#servicios">Servicios</a>
-          {/* Enlace rápido a la sección de preguntas frecuentes */}
-          <a href="#faq">FAQ</a>
+          <ul>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
         </nav>
-        {/* Información de contacto del propietario o responsable */}
+        {/* Sección de contacto */}
         <address className="footer-contact">
-          {/* Nombre del responsable */}
           <div>
             <strong>Nombre:</strong> Edison Proaño
           </div>
-          {/* Correo electrónico de contacto con enlace mailto */}
           <div>
             <strong>Correo:</strong>{" "}
             <a href="mailto:edison.proaño@itq.edu.ec" aria-label="Enviar correo a Edison Proaño">
               edison.proaño@itq.edu.ec
             </a>
           </div>
-          {/* Teléfono de contacto con enlace a WhatsApp */}
           <div>
             <strong>Teléfono:</strong>{" "}
             <a href="https://wa.me/593961620349" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
@@ -50,25 +44,24 @@ export default function Footer() {
             </a>
           </div>
         </address>
-        {/* Enlaces a redes sociales con íconos SVG personalizados */}
+        {/* Sección de redes sociales */}
         <div className="footer-social" aria-label="Redes sociales">
-          {/* Instagram */}
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
             className="footer-social-link"
+            title="Instagram"
           >
-            {/* Ícono Instagram oficial */}
             <svg width="32" height="32" viewBox="0 0 512 512" aria-hidden="true">
               <defs>
                 <radialGradient id="ig-gradient" cx="30%" cy="107%" r="150%" fx="30%" fy="107%">
-                  <stop offset="0%" stop-color="#fdf497"/>
-                  <stop offset="5%" stop-color="#fdf497"/>
-                  <stop offset="45%" stop-color="#fd5949"/>
-                  <stop offset="60%" stop-color="#d6249f"/>
-                  <stop offset="90%" stop-color="#285AEB"/>
+                  <stop offset="0%" stopColor="#fdf497"/>
+                  <stop offset="5%" stopColor="#fdf497"/>
+                  <stop offset="45%" stopColor="#fd5949"/>
+                  <stop offset="60%" stopColor="#d6249f"/>
+                  <stop offset="90%" stopColor="#285AEB"/>
                 </radialGradient>
               </defs>
               <circle cx="256" cy="256" r="256" fill="url(#ig-gradient)" />
@@ -77,29 +70,27 @@ export default function Footer() {
               <circle cx="352" cy="160" r="24" fill="#fff"/>
             </svg>
           </a>
-          {/* Facebook */}
           <a
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
             className="footer-social-link"
+            title="Facebook"
           >
-            {/* Ícono Facebook oficial */}
             <svg width="32" height="32" viewBox="0 0 512 512" aria-hidden="true">
               <circle cx="256" cy="256" r="256" fill="#1877F3"/>
               <path d="M355.7 330l11.6-75.6h-72.1v-49.1c0-20.7 10.1-40.8 42.5-40.8h32.9V99.1s-29.9-5.1-58.5-5.1c-59.7 0-98.7 36.2-98.7 101.9v56.5h-66.4V330h66.4v182c13.3 2.1 27 3.2 41 3.2s27.7-1.1 41-3.2V330h59.3z" fill="#fff"/>
             </svg>
           </a>
-          {/* WhatsApp */}
           <a
             href="https://wa.me/593961620349"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
             className="footer-social-link"
+            title="WhatsApp"
           >
-            {/* Ícono WhatsApp oficial */}
             <svg width="32" height="32" viewBox="0 0 512 512" aria-hidden="true">
               <circle cx="256" cy="256" r="256" fill="#25D366"/>
               <path d="M380.9 131.1c-35.6-35.6-83-55.2-133.6-55.2-104.3 0-189.1 84.8-189.1 189.1 0 33.4 8.7 66.1 25.2 94.7L64 448l89.3-23.5c27.7 15.1 59.1 23.1 91.1 23.1 104.3 0 189.1-84.8 189.1-189.1 0-50.6-19.6-98-55.2-133.6z" fill="#fff" opacity="0.2"/>
@@ -108,10 +99,14 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      {/* Línea inferior del footer con derechos reservados y año dinámico */}
+      {/* Línea inferior con año dinámico y derechos */}
       <div className="footer-bottom">
         <p>
-          &copy; {new Date().getFullYear()} THE EYE. Todos los derechos reservados.
+          &copy; {new Date().getFullYear()} <strong>THE EYE</strong>. Todos los derechos reservados.
+        </p>
+        <p style={{marginTop: 6, fontSize: "0.97rem", color: "#ffd700", display: "flex", alignItems: "center", justifyContent: "center", gap: 6}}>
+          <span aria-hidden="true" style={{fontSize: "1.2em"}}>👁️</span>
+          <span>Hecho con pasión en Ecuador</span>
         </p>
       </div>
     </footer>

@@ -137,6 +137,18 @@ const defaultResponses = [
 ];
 
 
+// Mensaje de bienvenida según la hora
+function getWelcomeMessage() {
+    const hour = new Date().getHours();
+    if (hour >= 6 && hour < 12) return "¡Buenos días! ☀️ Bienvenidos a The Eye. ¿En qué te puedo ayudar?";
+    if (hour >= 12 && hour < 19) return "¡Buenas tardes! 👋 Bienvenidos a The Eye. ¿En qué te puedo ayudar?";
+    return "¡Buenas noches! 🌙 Bienvenidos a The Eye. ¿En qué te puedo ayudar?";
+}
+
+const initialBotMessage = [
+    { from: "bot", text: getWelcomeMessage() }
+];
+
 function getBotResponse(message) {
     const msg = message.toLowerCase();
     for (const entry of defaultResponses) {
@@ -147,10 +159,6 @@ function getBotResponse(message) {
     return "No entendí tu pregunta, pero puedes consultarme sobre productos, servicios, personalización, contacto o galería. Si necesitas ayuda, dime por ejemplo: <b>productos</b>, <b>servicios</b> o <b>contacto</b>.";
 }
 
-const initialBotMessage = [
-    { from: "bot", text: "¡Bienvenidos a The Eye! Una experiencia inmersible para seleccionar tu ropa online, en que te puedo ayudar?" }
-];
-
 export default function ChatBot({ openOnLoad = false }) {
     const [open, setOpen] = useState(openOnLoad);
     const [messages, setMessages] = useState(initialBotMessage);
@@ -158,6 +166,7 @@ export default function ChatBot({ openOnLoad = false }) {
     const [voiceEnabled, setVoiceEnabled] = useState(false); // Nuevo estado
     const [listening, setListening] = useState(false);
     const [botTyping, setBotTyping] = useState(false);
+    const [animClass, setAnimClass] = useState("");
     const chatEndRef = useRef(null);
 
     useEffect(() => {
@@ -171,6 +180,12 @@ export default function ChatBot({ openOnLoad = false }) {
         if (open) {
             setMessages(initialBotMessage);
         }
+    }, [open]);
+
+    // Animación de entrada/salida
+    useEffect(() => {
+        if (open) setAnimClass("chatbot-window-anim-in");
+        else if (!open) setAnimClass("chatbot-window-anim-out");
     }, [open]);
 
     // Función para leer en voz alta el último mensaje del bot con voz natural y realista
@@ -297,6 +312,110 @@ export default function ChatBot({ openOnLoad = false }) {
 
     return (
         <>
+            <style>{`
+                .chatbot-window {
+                    background: #111419;
+                    color: #ffd700;
+                    border-radius: 18px;
+                    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+                    border: 2px solid #ebc44e;
+                    opacity: 1;
+                    transform: translateY(0);
+                    transition: opacity 0.35s cubic-bezier(0.2,0.8,0.2,1), transform 0.35s cubic-bezier(0.2,0.8,0.2,1);
+                }
+                .chatbot-window-anim-in {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                .chatbot-window-anim-out {
+                    opacity: 0;
+                    transform: translateY(60px);
+                    pointer-events: none;
+                }
+                .chatbot-header {
+                    background: #ebc44e;
+                    color: #232323;
+                    border-bottom: 2px solid #ffd700;
+                }
+                .chatbot-close {
+                    color: #232323;
+                }
+                .chatbot-messages {
+                    background: #111419;
+                }
+                .chatbot-msg.bot {
+                    background: #ebc44e22;
+                    color: #ffd700;
+                }
+                .chatbot-msg.user {
+                    background: #23233a;
+                    color: #fff;
+                }
+                .chatbot-avatar.bot-avatar {
+                    color: #ebc44e;
+                }
+                .chatbot-avatar.user-avatar {
+                    color: #ffd700;
+                }
+                .chatbot-input-area {
+                    background: transparent;
+                    border-top: 2px solid #ebc44e;
+                }
+                .chatbot-input-area input {
+                    background: #232323;
+                    color: #ffd700;
+                    border: 1.5px solid #ebc44e;
+                }
+                .chatbot-input-area button[type="button"] {
+                    background: #232323;
+                    color: #ffd700;
+                    border: 1.5px solid #ebc44e;
+                }
+                .chatbot-input-area button[type="button"]:disabled,
+                .chatbot-input-area button[type="button"].listening {
+                    background: #ffd700;
+                    color: #232323;
+                }
+                .chatbot-input-area button[type="submit"] {
+                    background: #ffd700;
+                    color: #232323;
+                    border: 1.5px solid #ebc44e;
+                }
+                .chatbot-mini-fab {
+                    background: #ebc44e;
+                    color: #232323;
+                }
+                .chatbot-mini-fab:hover {
+                    background: #ffd700;
+                }
+                .bot-online-badge {
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    background: #2ecc40;
+                    border: 2px solid #fff;
+                    border-radius: 50%;
+                    position: relative;
+                    left: -6px;
+                    top: 10px;
+                    box-shadow: 0 0 4px #2ecc40;
+                }
+                @media (max-width: 600px) {
+                    .chatbot-window {
+                        right: 8px;
+                        bottom: 8px;
+                        width: 98vw;
+                        max-width: 98vw;
+                        border-radius: 12px;
+                    }
+                    .chatbot-mini-fab {
+                        right: 12px;
+                        bottom: 12px;
+                        width: 48px;
+                        height: 48px;
+                    }
+                }
+            `}</style>
             {/* Mini icono flotante para abrir/cerrar el chat */}
             {!open && (
                 <button
@@ -315,16 +434,17 @@ export default function ChatBot({ openOnLoad = false }) {
 
             {/* Ventana del chat */}
             {open && (
-                <div className="chatbot-window chatbot-window-anim">
+                <div className={`chatbot-window ${animClass}`}>
                     <div className="chatbot-header">
                         <span>{BOT_NAME}</span>
                         {/* Botón de voz eliminado */}
                         <button
                             className="chatbot-close"
                             onClick={() => {
-                                setOpen(false);
-                                setMessages(initialBotMessage); // Limpia el historial al cerrar
-                                window.speechSynthesis.cancel(); // Detiene la voz al cerrar
+                                setAnimClass("chatbot-window-anim-out");
+                                setTimeout(() => setOpen(false), 350);
+                                setMessages(initialBotMessage);
+                                window.speechSynthesis.cancel();
                             }}
                         >
                             &times;
@@ -337,7 +457,10 @@ export default function ChatBot({ openOnLoad = false }) {
                                 className={`chatbot-msg ${msg.from === "bot" ? "bot" : "user"}`}
                             >
                                 {msg.from === "bot" && (
-                                    <span className="chatbot-avatar bot-avatar" aria-label="Bot">👁️</span>
+                                    <span style={{position: "relative", display: "inline-flex", alignItems: "center"}}>
+                                        <span className="chatbot-avatar bot-avatar" aria-label="Bot">👁️</span>
+                                        <span className="bot-online-badge" title="Online"></span>
+                                    </span>
                                 )}
                                 {msg.from === "user" && (
                                     <span className="chatbot-avatar user-avatar" aria-label="Tú">🧑</span>
@@ -375,13 +498,13 @@ export default function ChatBot({ openOnLoad = false }) {
         autoFocus
         style={{
             flex: 1,
-            border: "1.5px solid #FFD700",
+            border: "1.5px solid #ebc44e", // cobre/dorado principal
             borderRadius: 8,
             padding: "10px 14px",
             fontSize: 15,
             outline: "none",
-            background: "#23233a",
-            color: "#FFD700",
+            background: "#232323", // fondo oscuro igual que la web
+            color: "#ffd700",      // texto dorado
             marginRight: 0,
             minWidth: 0
         }}
@@ -389,13 +512,13 @@ export default function ChatBot({ openOnLoad = false }) {
     <button
         type="button"
         onClick={e => {
-            e.preventDefault(); // Evita que el formulario se envíe
+            e.preventDefault();
             handleVoiceInput();
         }}
         style={{
-            background: listening ? "#FFD700" : "#23233a",
-            color: listening ? "#23233a" : "#FFD700",
-            border: "1.5px solid #FFD700",
+            background: listening ? "#ffd700" : "#232323", // dorado cuando escucha, oscuro normal
+            color: listening ? "#232323" : "#ffd700",      // oscuro cuando escucha, dorado normal
+            border: "1.5px solid #ebc44e",
             borderRadius: 8,
             padding: "0 14px",
             height: 40,
@@ -405,25 +528,25 @@ export default function ChatBot({ openOnLoad = false }) {
             fontWeight: 700,
             fontSize: 15,
             cursor: "pointer",
-            boxShadow: listening ? "0 2px 8px #FFD70055" : "0 2px 8px #23233a22",
+            boxShadow: listening ? "0 2px 8px #ffd70055" : "0 2px 8px #23232322",
             transition: "background 0.2s, color 0.2s, border 0.2s"
         }}
         aria-label="Hablar"
         disabled={listening}
     >
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style={{marginRight: 6}}>
-            <rect x="7" y="3" width="6" height="10" rx="3" fill={listening ? "#23233a" : "#FFD700"} />
-            <rect x="9" y="15" width="2" height="3" rx="1" fill={listening ? "#23233a" : "#FFD700"} />
-            <path d="M5 10v1a5 5 0 0010 0v-1" stroke={listening ? "#23233a" : "#FFD700"} strokeWidth="1.5" />
+            <rect x="7" y="3" width="6" height="10" rx="3" fill={listening ? "#232323" : "#ffd700"} />
+            <rect x="9" y="15" width="2" height="3" rx="1" fill={listening ? "#232323" : "#ffd700"} />
+            <path d="M5 10v1a5 5 0 0010 0v-1" stroke={listening ? "#232323" : "#ffd700"} strokeWidth="1.5" />
         </svg>
         {listening ? "Escuchando..." : "Audio"}
     </button>
     <button
         type="submit"
         style={{
-            background: "#FFD700",
-            color: "#23233a",
-            border: "1.5px solid #FFD700",
+            background: "#ffd700",      // dorado principal
+            color: "#232323",           // texto oscuro
+            border: "1.5px solid #ebc44e",
             borderRadius: 8,
             padding: "0 18px",
             height: 40,
@@ -433,12 +556,12 @@ export default function ChatBot({ openOnLoad = false }) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: "0 2px 8px #FFD70055",
+            boxShadow: "0 2px 8px #ffd70055",
             transition: "background 0.2s, color 0.2s, border 0.2s"
         }}
     >
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style={{marginRight: 6}}>
-            <path d="M4 10h10M10 4l6 6-6 6" stroke="#23233a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M4 10h10M10 4l6 6-6 6" stroke="#232323" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
         Enviar
     </button>
