@@ -1,37 +1,92 @@
-import '../styles/Hero.css';
-import { Link } from 'react-router-dom';
-
-const benefits = [
-  { icon: "🚚", text: "Envíos rápidos a todo Quito y alrededores" },
-  { icon: "🌱", text: "Materiales premium, ecológicos y duraderos" },
-  { icon: "🤝", text: "Atención personalizada y asesoría en tu compra" },
-  { icon: "🎁", text: "Promociones y descuentos exclusivos cada mes" },
-  { icon: "🛡️", text: "Satisfacción garantizada o te devolvemos tu dinero" }
-];
+import '../styles/Products.css';
+import { productos } from '../components/Products';
 
 export default function Hero() {
+  // Muestra los 6 primeros productos actuales del products.jsx
+  const destacados = productos.slice(0, 6);
+
   return (
-    <section id="inicio" className="hero" aria-label="Sección principal de bienvenida">
-      <header>
-        <h1>Bienvenido a <span style={{ color: "#FFD700" }}>THE EYE</span></h1>
-        <h2>Estilo único, calidad garantizada</h2>
-      </header>
-      <p>
-        Descubre tu tienda de camisetas y hoodies personalizadas.<br />
-        Diseños originales hechos a mano para expresar tu personalidad.<br />
-        <strong>¡Haz tu pedido hoy y destaca con estilo!</strong>
+    <section
+      id="inicio"
+      className="products"
+      style={{
+        padding: "5rem 1rem 1.2rem",
+        marginTop: "0",
+        minHeight: "35vh",
+        background: "linear-gradient(120deg, #181818 70%, #23233a 100%)",
+        boxShadow: "0 8px 32px 0 rgba(227, 189, 75, 0.10)",
+        borderRadius: "1.2rem",
+        maxWidth: "1200px",
+        marginLeft: "auto",
+        marginRight: "auto",
+        position: "relative",
+        zIndex: 2
+      }}
+    >
+      <h1
+        style={{
+          textAlign: "center",
+          fontWeight: 900,
+          fontSize: "clamp(2.3rem, 6vw, 3.2rem)",
+          color: "#FFD700",
+          letterSpacing: "2.5px",
+          marginBottom: "0.7rem",
+          marginTop: 0,
+          textShadow: "0 2px 16px #0008"
+        }}
+      >
+        THE EYE
+      </h1>
+      <p
+        style={{
+          textAlign: "center",
+          color: "#e0e0e0",
+          fontSize: "clamp(1.1rem, 2.5vw, 1.35rem)",
+          margin: "0 0 2rem 0",
+          fontWeight: 400,
+          letterSpacing: "1px",
+          textShadow: "0 2px 8px #0006"
+        }}
+      >
+        Camisetas exclusivas, diseños originales y calidad premium. ¡Descubre tu estilo y destaca desde el primer momento!
       </p>
-      <ul className="hero-benefits" aria-label="Beneficios de comprar en THE EYE">
-        {benefits.map((b, i) => (
-          <li key={i}>
-            <span aria-hidden="true" style={{ marginRight: 8 }}>{b.icon}</span>
-            {b.text}
-          </li>
+      <div
+        className="product-grid"
+        style={{
+          gap: "1.2rem"
+        }}
+      >
+        {destacados.map((p, i) => (
+          <div
+            key={i}
+            className="flip-card"
+            style={{
+              minHeight: "180px", // Tarjetas más pequeñas
+              aspectRatio: "3/4"
+            }}
+          >
+            <div className="flip-card-inner">
+              <div className="flip-card-front">
+                <div className="image-container">
+                  <img src={p.imagen} alt={p.nombre} />
+                </div>
+                <h3>{p.nombre}</h3>
+              </div>
+              <div className="flip-card-back">
+                <h3>{p.nombre}</h3>
+                <p className="description">{p.descripcion}</p>
+                <div className="product-details">
+                  <p><strong>Tallas:</strong> {p.talla}</p>
+                  <p><strong>Color:</strong> {p.color}</p>
+                  <p><strong>Material:</strong> {p.material}</p>
+                  <p><strong>Envío:</strong> {p.tiempo}</p>
+                  <p><strong>Precio:</strong> {p.precio}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
-      <Link to="/productos" className="hero-cta" aria-label="Ver productos de THE EYE">
-        Ver productos
-      </Link>
+      </div>
     </section>
   );
 }

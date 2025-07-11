@@ -7,6 +7,15 @@ const BOT_NAME = "THE EYE";
 
 const defaultResponses = [
     // Saludos y bienvenida
+
+    {
+        keywords: [
+            "Martin", "martín", "Martín", "martin"
+        ],
+        response : "Hola, cabezón"
+        
+    },
+
     {
         keywords: [
             "hola", "buenas", "saludos", "hey", "holi", "hello", "hi", "helouda", "saludo",
